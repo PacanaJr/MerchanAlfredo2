@@ -1,5 +1,6 @@
 package com.example.merchanalfredo.ui.components
 
+import android.R
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -12,17 +13,20 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
@@ -35,7 +39,9 @@ fun JugadorCard(
 ) {
     Card(
         modifier = Modifier.fillMaxWidth(),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
+
+
     ) {
         Column(modifier = Modifier.fillMaxWidth()) {
 
@@ -77,17 +83,18 @@ fun JugadorCard(
                 }
             }
 
+            Column(modifier = Modifier.padding(horizontal = 22.dp, vertical = 2.dp)) {
+                Text(text = jugador.nombre, style = MaterialTheme.typography.titleLarge)
+                Spacer(modifier = Modifier.height(2.dp))
+                Text(text = jugador.nacionalidad, style = MaterialTheme.typography.bodyMedium)
+                Spacer(modifier = Modifier.height(2.dp))
+                Text(text = jugador.posicion, style = MaterialTheme.typography.bodySmall)
+                Spacer(modifier = Modifier.height(10.dp))
+            }
         }
     }
 
-    Column(modifier = Modifier.padding(horizontal = 12.dp, vertical = 2.dp)) {
-        Text(text = jugador.nombre, style = MaterialTheme.typography.titleLarge)
-        Spacer(modifier = Modifier.height(2.dp))
-        Text(text = jugador.nacionalidad, style = MaterialTheme.typography.bodyMedium)
-        Spacer(modifier = Modifier.height(2.dp))
-        Text(text = jugador.posicion, style = MaterialTheme.typography.bodySmall)
-        Spacer(modifier = Modifier.height(10.dp))
-    }
+
 
 
 

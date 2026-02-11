@@ -36,7 +36,7 @@ fun HomeScreen(
 
         Text(
             text = "Plantilla temporada 25/26",
-            style = MaterialTheme.typography.titleMedium
+            style = MaterialTheme.typography.titleLarge
         )
 
         Spacer(modifier = Modifier.height(10.dp))
