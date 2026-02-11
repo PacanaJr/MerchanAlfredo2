@@ -1,22 +1,17 @@
-package com.example.mitienda.navigation
+package com.example.merchanalfredo.navigation
 
 import androidx.navigation3.runtime.NavKey
 import kotlinx.serialization.Serializable
 
-sealed interface Routes : NavKey {
+@Serializable
+sealed class Routes : NavKey {
 
     @Serializable
-    data object Login : Routes
+    data object Login : Routes()
 
     @Serializable
-    data object Registro : Routes
+    data object Home : Routes()
 
     @Serializable
-    data object Home : Routes
-
-    @Serializable
-    data class NuevoJugador(val id: String) : Routes
-
-    @Serializable
-    data object Error : Routes
+    data object NuevoJugador : Routes()
 }
