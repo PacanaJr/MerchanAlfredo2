@@ -49,7 +49,10 @@ fun GestionNavegacion() {
                     )
                 }
 
-                else -> NavEntry(key) {}}
+                else -> NavEntry(key) {}
 
-
+            }
+            }
+    )
 }
+
