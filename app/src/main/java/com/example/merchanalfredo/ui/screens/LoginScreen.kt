@@ -56,4 +56,67 @@ fun LoginScreen(
         )
     }
 
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+
+        Image(
+            painter = painterResource(id = R.drawable.logo_unicaja),
+            contentDescription = "Logo",
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 60.dp)
+        )
+
+        Spacer(modifier = Modifier.height(12.dp))
+
+        Text(
+            text = "Inicia sesión",
+            style = MaterialTheme.typography.headlineSmall
+        )
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        OutlinedTextField(
+            value = email,
+            onValueChange = { email = it },
+            label = { Text("Email") },
+            modifier = Modifier.fillMaxWidth(),
+            enabled = !isLoading
+        )
+
+        Spacer(modifier = Modifier.height(10.dp))
+
+        OutlinedTextField(
+            value = password,
+            onValueChange = { password = it },
+            label = { Text("Contraseña") },
+            modifier = Modifier.fillMaxWidth(),
+            enabled = !isLoading,
+            visualTransformation = if (mostrarPass) VisualTransformation.None else PasswordVisualTransformation(),
+            trailingIcon = {
+                TextButton(onClick = { mostrarPass = !mostrarPass }) {
+                    Text(if (mostrarPass) "Ocultar" else "Mostrar")
+                }
+            }
+        )
+
+        Spacer(modifier = Modifier.height(18.dp))
+
+        if (isLoading) {
+            CircularProgressIndicator()
+        } else {
+            Button(
+                onClick = { authViewModel.signIn(email, password, onLoginSuccess) },
+                modifier = Modifier.fillMaxWidth(),
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF27D21F))
+            ) {
+                Text("Login", color = Color.Black)
+            }
+        }
+    }
 }
